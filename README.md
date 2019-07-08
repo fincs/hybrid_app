@@ -34,6 +34,8 @@ To build for PC, the following components are required:
 - GLFW version 3.3 or higher (as a static library)
 - GLM version 0.9.8 or higher
 
+Alternatively you can use the provided .sln with Visual Studio 2019 with the Desktop C++ Workload installed.
+
 Please refer to the usual sources of information for your particular operating system. Usually the commands needed to build this project will look like this:
 
 ```bash
@@ -54,3 +56,14 @@ LDFLAGS="-static" meson build
 ninja -C build
 ./build/hybrid_app
 ```
+
+### Building for Windows using Visual Studio
+
+Before launching Visual Studio install the needed libraries, the easiest way is by using [vcpkg](https://github.com/microsoft/vcpkg)
+```
+vcpkg install glfw3:x86-windows
+vcpkg install glm:x86-windows
+``` 
+If you didn't install vcpkg as user-wide or downloaded the libraries by other means you'll have to manually add the include and linking paths to the project. \
+Open the solution and it should build without issues. \
+Note that switch-specific source files should be exclueded from the project or else Visual Studio will try to compile them for Windows.
